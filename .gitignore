@@ -105,3 +105,20 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+
+
+
+
+
+# weight file and database
+path/to/
+*.pth
+*.pth.tar
+.gitignore
+
+
+
+
+

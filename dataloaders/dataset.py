@@ -57,8 +57,8 @@ class VideoDataset(Dataset):
         self.label_array = np.array([self.label2index[label] for label in labels], dtype=int)   # 将标签名字的索引转换为数组
 
         if dataset == "ucf101":
-            if not os.path.exists('./dataloaders/ucf_labels.txt'):
-                with open('./dataloaders/ucf_labels.txt', 'w') as f:
+            if not os.path.exists('../dataloaders/ucf_labels.txt'):
+                with open('../dataloaders/ucf_labels.txt', 'w') as f:
                     for id, label in enumerate(sorted(self.label2index)):
                         f.writelines(str(id+1) + ' ' + label + '\n')                          # 生成标签文件
 
@@ -83,7 +83,7 @@ class VideoDataset(Dataset):
             buffer = self.randomflip(buffer)                                    # 在测试集上随机反转
         buffer = self.normalize(buffer)
         buffer = self.to_tensor(buffer)
-        return torch.from_numpy(buffer), torch.from_numpy(labels)                #  返回帧和
+        return torch.from_numpy(buffer), torch.from_numpy(labels)                #  返回帧和标签
 
     def check_integrity(self):                                  # 判断是否存在数据集路径，存在返回True,否则返回False
         if not os.path.exists(self.root_dir):

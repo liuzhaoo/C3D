@@ -23,18 +23,18 @@ def main():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("Device being used:", device)
 
-    with open('./dataloaders/ucf_labels.txt', 'r') as f:
+    with open('../dataloaders/ucf_labels.txt', 'r') as f:
         class_names = f.readlines()
         f.close()
     # init model
     model = C3D_model.C3D(num_classes=101)
-    checkpoint = torch.load('2C3D_ucf101_epoch-39.pth.tar', map_location=lambda storage, loc: storage)
+    checkpoint = torch.load('../C3D-ucf101_epoch-99.pth.tar', map_location=lambda storage, loc: storage)
     model.load_state_dict(checkpoint['state_dict'])
     model.to(device)
     model.eval()
 
     # read video
-    video = '/Path/to/UCF-101/ApplyLipstick/v_ApplyLipstick_g04_c02.avi'
+    video = '../path/to/UCF-101/ApplyLipstick/v_ApplyLipstick_g04_c02.avi'
     cap = cv2.VideoCapture(video)
     retaining = True
 
