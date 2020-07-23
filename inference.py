@@ -28,7 +28,7 @@ def main():
         f.close()
     # init model
     model = C3D_model.C3D(num_classes=101)
-    checkpoint = torch.load('run/run_1/models/C3D_ucf101_epoch-39.pth.tar', map_location=lambda storage, loc: storage)
+    checkpoint = torch.load('2C3D_ucf101_epoch-39.pth.tar', map_location=lambda storage, loc: storage)
     model.load_state_dict(checkpoint['state_dict'])
     model.to(device)
     model.eval()

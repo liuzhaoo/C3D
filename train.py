@@ -117,6 +117,7 @@ def train_model(dataset=dataset, save_dir=save_dir, num_classes=num_classes, lr=
                 # scheduler.step() is to be called once every epoch during training
                 scheduler.step()
                 model.train()
+
             else:
                 model.eval()
 
